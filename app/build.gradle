@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "somnus.example.com.minghuaapp"
+        minSdkVersion 22
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "4caa71b1cd6de791daabfe42", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // retrofit + rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.1.1" // 必要rxjava2依赖
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1" // 必要rxandrroid依赖，切线程时需要用到
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0' // 必要retrofit依赖
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0' // 必要依赖，和Rxjava结合必须用到，下面会提到
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0' // 必要依赖，解析json字符所用
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1' //非必要依赖， log依赖，如果需要打印OkHttpLog需要添加
+
+    // 底部导航栏
+    implementation 'com.github.forvv231:EasyNavigation:1.0.2'
+    // 极光推送
+    implementation 'cn.jiguang.sdk:jpush:3.1.6'
+    implementation 'cn.jiguang.sdk:jcore:1.2.5'
+    // toolBar
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    // 点赞
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+    // 超炫酷点赞效果
+    implementation 'com.sackcentury:shinebutton:0.2.0'
+    // 标签
+    implementation 'co.lujun:androidtagview:1.1.7'
+    // 沉浸式状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    // Glide 图片加载框架
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    // Glide-Transformations
+    implementation 'jp.wasabeef:glide-transformations:2.0.2'
+    // 验证码输入框
+    implementation 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
+    // 二维码
+    implementation 'com.google.zxing:core:3.3.2'
+    // 九宫格
+    implementation 'com.jaeger.ninegridimageview:library:1.1.1'
+    compile ('com.zhihu.android:matisse:0.5.0-alpha4') {
+        exclude group: 'it.sephiroth.android.library.imagezoom'
+    }
+    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:2.3.0'
+    // 进度按钮
+    implementation 'com.unstoppable:submitbutton:1.1.3'
+    // textview
+    implementation 'com.github.woxingxiao:VectorCompatTextView:2.5'
+    //数据库封装类
+    implementation 'com.orhanobut:hawk:2.0.1'
+    //黄油刀
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    // 轮播图
+    implementation 'com.youth.banner:banner:1.1.5'
+    // 数字滚动效果
+    implementation 'com.github.chaychan:PowerfulViewLibrary:1.1.0'
+    // EventBus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    // 可拖动badge
+    implementation 'q.rorbin:badgeview:1.1.0'
+}

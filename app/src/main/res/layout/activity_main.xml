@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="somnus.example.com.minghuaapp.view.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/main_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/main_bnv"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGray"
+            android:layout_above="@+id/main_bnv"/>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/main_bnv"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/activity_main_navigation"
+            app:itemTextColor="@drawable/tab_bg"
+            app:itemIconTint="@drawable/tab_bg"
+            app:elevation="0dp"/>
+
+        <TextView
+            android:id="@+id/main_badge"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/ic_badge_bg"
+            android:text="1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="36dp"
+            android:textSize="10sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="124dp"
+            android:elevation="0.1dp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

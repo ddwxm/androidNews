@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/fragment_recommend_Refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- 轮播图区 -->
+                <com.youth.banner.Banner
+                    android:id="@+id/fragment_recommend_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="2dp"
+                    app:indicator_width="6dp"
+                    app:indicator_height="6dp"
+                    app:indicator_margin="3dp"
+                    app:indicator_drawable_selected="@drawable/indicator_selected_bg"
+                    app:indicator_drawable_unselected="@drawable/indicator_unselected_bg"/>
+
+                <View
+                    android:id="@+id/fragment_recommend_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGray"
+                    android:layout_below="@+id/fragment_recommend_banner"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/fragment_recommend_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/fragment_recommend_view"
+                    android:paddingBottom="8dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_recommend_re"
+                    android:text="已经到底了呦"
+                    android:textColor="@color/textPrimaryLight"
+                    android:textSize="@dimen/txt_medium_small_size"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"/>
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</android.support.constraint.ConstraintLayout>

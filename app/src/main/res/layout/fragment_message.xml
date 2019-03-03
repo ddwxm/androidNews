@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/message_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@color/colorWhite"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:layout_collapseMode="pin"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="@string/message"
+                android:textSize="@dimen/txt_big_size"
+                android:textColor="@color/textPrimaryLight"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:paddingBottom="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/message_view_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/colorSuperLightGray"/>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/message_direct"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:stateListAnimator="@animator/cardview_touch_raise"
+                    app:cardElevation="2dp"
+                    android:clickable="true"
+                    android:layout_below="@+id/message_view_one">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:id="@+id/message_direct_icon"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/ic_message_direct_bg">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_comments_white_24dp"/>
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/message_direct_logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/direct"
+                            android:layout_toEndOf="@+id/message_direct_icon"
+                            android:textSize="@dimen/txt_medium_big_size"
+                            android:layout_marginTop="12dp"
+                            android:textColor="@color/textPrimaryLight"
+                            android:layout_marginStart="12dp"/>
+
+                        <TextView
+                            android:id="@+id/message_direct_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/direct"
+                            android:layout_toEndOf="@+id/message_direct_icon"
+                            android:layout_below="@+id/message_direct_logo"
+                            android:textSize="@dimen/txt_medium_size"
+                            android:layout_marginStart="12dp"/>
+
+                        <TextView
+                            android:id="@+id/message_direct_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/message_direct_name"
+                            android:layout_below="@+id/message_direct_logo"
+                            android:textSize="@dimen/txt_medium_size"
+                            android:layout_marginStart="4dp"/>
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            app:srcCompat="@drawable/ic_chevron_right_black_24dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="16dp"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:id="@+id/message_view_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/colorSuperLightGray"
+                    android:layout_below="@+id/message_direct"/>
+
+                <View
+                    android:id="@+id/message_view_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLightGray"
+                    android:layout_below="@+id/message_view_two"/>
+
+                <TextView
+                    android:id="@+id/message_notifications_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/message_list"
+                    android:textSize="@dimen/txt_medium_big_size"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/textPrimaryLight"
+                    android:layout_below="@+id/message_view_two"
+                    android:layout_marginStart="16dp"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/message_notifications_re"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/message_notifications_text"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:paddingBottom="4dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/message_noMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/message_no_im"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                app:srcCompat="@drawable/ic_notifications_black_24dp"
+                android:tint="@color/colorLightGray"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/message_no_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/message_no_txt"
+                android:layout_below="@+id/message_no_im"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/txt_medium_big_size"
+                android:textColor="@color/textPrimaryLight"/>
+
+            <LinearLayout
+                android:id="@+id/message_login_text"
+                android:layout_width="96dp"
+                android:layout_height="36dp"
+                android:layout_below="@+id/message_no_txt"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_message_login_bg">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/login_register"
+                    android:textColor="@color/textPrimaryLight"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
